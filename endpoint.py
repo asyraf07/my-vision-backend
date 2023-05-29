@@ -7,7 +7,7 @@ import cv2
 import torch
 
 model = torch.hub.load("ultralytics/yolov5", 'custom',
-                       path="./assets/model/bestCoco.pt")
+                       path="./assets/model/200 64.pt")
 
 
 def home():
@@ -43,6 +43,7 @@ def predict():
         output = model(image)
 
     output = output.pandas().xyxy[0]
+    print(output)
 
     # Convert the model output to a suitable format for response
     response = output.to_dict('records')
